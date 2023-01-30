@@ -1,71 +1,31 @@
+body {
+  width: 100%;
+  color: white;
+
+  background-color: #1f1e1e;
+}
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(25, 21, 47);
-  border-bottom: solid rgb(88, 84, 94);
+  margin-left: -8px;
+  background-color: rgb(0, 0, 0);
+  border-top: 6px solid rgb(0, 218, 76);
   padding: 0 2vw;
   color: white;
 }
 
-/* CSS */
-.button-4 {
-  appearance: none;
-  background-color: #fafbfc;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
-    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-  box-sizing: border-box;
-  color: #24292e;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  padding: 6px 16px;
-  position: relative;
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-  word-wrap: break-word;
+.logo-image {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
 }
 
-.button-4:hover {
-  background-color: #f3f4f6;
-  text-decoration: none;
-  transition-duration: 0.1s;
-}
-
-.button-4:disabled {
-  background-color: #fafbfc;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959da5;
-  cursor: default;
-}
-
-.button-4:active {
-  background-color: #edeff2;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
-}
-
-.button-4:focus {
-  outline: 1px transparent;
-}
-
-.button-4:before {
-  display: none;
-}
-
-.button-4:-webkit-details-marker {
-  display: none;
+@media (max-width: 600px) {
+  .logo-image {
+    display: none;
+  }
 }
 
 .btn {
@@ -80,4 +40,96 @@ header {
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+}
+
+.btn-singup {
+  width: 15rem;
+  background: rgb(255, 204, 0);
+  color: rgb(7, 6, 6);
+
+  font-size: large;
+  cursor: pointer;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.welcome-unlogged {
+  display: flex;
+  border: 2px solid rgb(246, 217, 2);
+
+  border-radius: 0.5em;
+  max-width: 60%;
+  height: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*--------------------------------------/
+ ----CARD STYLING   --------------------/
+---------------------------------------*/
+.label {
+  font-size: 1.1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card {
+  width: 90%;
+  margin: 1rem;
+  padding-bottom: 1rem;
+
+  text-align: center;
+  border: solid 2px #fcad02;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(217, 218, 182, 0.2);
+}
+
+.card a {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  background-color: #1c36fc;
+  padding: 0.5rem;
+  border-radius: 7px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/* 	Display two cards per row at 576px breakpoint */
+@media (min-width: 576px) {
+  .cards-container {
+    /* 	Set the display for the outer container to flex */
+    display: flex;
+    display: inline-block;
+
+    justify-content: space-around;
+  }
+
+  .card {
+    /* 	Set the flex-basis so that two cards are displayed in each row. */
+    flex-basis: calc(50% - 3rem);
+  }
+}
+
+/* 	Display four cards across one row at 992px breakpoint */
+@media (min-width: 992px) {
+  .card {
+    flex-basis: calc(25% - 3rem);
+    padding-bottom: 1.5rem;
+  }
+}
+
+.cardHeader {
+  text-align: center;
 }

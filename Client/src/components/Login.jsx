@@ -18,7 +18,9 @@ function Login() {
     <>
       {auth.loggedIn ? (
         <div>
-          <button onClick={logout}>Logout</button>
+          <button className="btn" onClick={logout}>
+            Logout
+          </button>
         </div>
       ) : (
         <div>
@@ -33,7 +35,7 @@ function Login() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
-            <input type="submit" value="Login" />
+            <input className="btn" type="submit" value="Login" />
           </form>
         </div>
       )}
