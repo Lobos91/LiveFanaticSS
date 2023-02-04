@@ -4,7 +4,7 @@ import Welcome from "./components/Welcome";
 import Header from "./components/Header";
 import Signup from "./components/Signup";
 import { ConcertLatest } from "./components/ConcertLatest";
-import { Artist } from "./components/Artist";
+import { SearchPage } from "./components/SearchPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Welcome />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/concerts" element={<ConcertLatest />} />
-            <Route path="/artists" element={<Artist />} />
+            <Route path="/searchpage" element={<SearchPage />} />
           </Routes>
         </div>
       </Router>

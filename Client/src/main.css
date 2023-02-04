@@ -16,6 +16,16 @@ header {
   color: white;
 }
 
+.search {
+  padding: 5px;
+  font-size: 20px;
+}
+
+.login {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
 .logo-image {
   width: 100%;
   height: auto;
@@ -30,15 +40,15 @@ header {
 
 .btn {
   display: inline-block;
-  background: rgb(11, 248, 42);
+  background: rgb(27, 226, 54);
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 15px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
   font-family: inherit;
 }
 
@@ -54,12 +64,10 @@ header {
   border-radius: 5px;
 }
 
-.btn:focus {
-  outline: none;
-}
-
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(1.2);
+  background: rgb(255, 204, 0);
+  color: black;
 }
 
 .welcome-unlogged {
@@ -85,7 +93,6 @@ header {
   width: 90%;
   margin: 1rem;
   padding-bottom: 1rem;
-
   text-align: center;
   border: solid 2px #fcad02;
   border-radius: 10px;
@@ -112,7 +119,6 @@ header {
     /* 	Set the display for the outer container to flex */
     display: flex;
     display: inline-block;
-
     justify-content: space-around;
   }
 

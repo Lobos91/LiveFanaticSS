@@ -66,7 +66,3 @@ require("./routes/generic-routes.js")(server, db);
 server.get("*", (req, res) => {
   res.sendFile(__dirname + "/whatever-directory-for-react-build/index.html");
 });
-
-server.get("/", (req, res) => {
-  res.json({ message: "Elo, będzie dobrze." });
-});

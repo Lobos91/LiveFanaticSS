@@ -15,7 +15,7 @@ function Login() {
   let loggedIn = true;
 
   return (
-    <>
+    <div>
       {auth.loggedIn ? (
         <div>
           <button className="btn" onClick={logout}>
@@ -25,21 +25,26 @@ function Login() {
       ) : (
         <div>
           <form onSubmit={submit}>
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <input className="btn" type="submit" value="Login" />
+            <div>
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                style={{ marginRight: 5 }}
+                className="login"
+              />
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                className="login"
+              />
+              <input className="btn" type="submit" value="Login" />
+            </div>
           </form>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,9 @@
 import Login from "./Login";
 import logo from "../assets/livefanlogo.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import SearchBar from "./SearchBar";
 
 function Header() {
   const navigate = useNavigate();
@@ -14,11 +17,7 @@ function Header() {
       <button className="btn" onClick={() => navigate("/concerts")}>
         Current concerts
       </button>
-
-      <button className="btn" onClick={() => navigate("/artist")}>
-        Artists
-      </button>
-
+      <SearchBar />
       <Login />
     </header>
   );

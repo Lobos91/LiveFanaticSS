@@ -33,13 +33,14 @@ export const ConcertLatest = () => {
 
       {concerts.map((concert) => {
         return (
-          <section className="cards-container">
+          <section className="cards-container" key={concert.id}>
             <div className="card">
               <h1>{concert.name}</h1>
               <img src={concert.image} />
               <p className="label">
                 {concert.datum} at {concert.venue}
               </p>
+              <h1> {concert.artistid}</h1>
               <a href="#">Book a ticket</a>
             </div>
           </section>

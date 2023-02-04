@@ -1,6 +1,19 @@
-# live-fanatic-backend
+## Getting Started
 
-1.  Var hittar jag data som musik genre/stil, artister, lediga bilieter ??
-2.  Var sparar man data t.ex. efter registrering ny användare
-3.  Datumen för konserterna är inte längre aktuella
-4.  Can i use botstrap or tailwind for styling?
+Ensure concurrently is installed globally
+
+```
+npm i -g concurrently
+npm i -g nodemon
+```
+
+### Scripts
+
+Run app and client in dev mode
+
+npm run dev
+
+### Notes
+
+audios
+videos
