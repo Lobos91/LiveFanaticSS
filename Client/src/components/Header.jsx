@@ -11,14 +11,37 @@ function Header() {
   return (
     <header>
       <img src={logo} className="logo-image" />
-      <button className="btn" onClick={() => navigate("/")}>
-        Home
-      </button>
-      <button className="btn" onClick={() => navigate("/concerts")}>
-        Current concerts
-      </button>
-      <SearchBar />
-      <Login />
+
+      <section class="top-nav">
+        <input id="menu-toggle" type="checkbox" />
+        <label class="menu-button-container" for="menu-toggle">
+          <div class="menu-button"></div>
+        </label>
+        <ul class="menu">
+          <li>
+            <button className="btn" onClick={() => navigate("/")}>
+              Home
+            </button>
+          </li>
+          <li>
+            <button className="btn" onClick={() => navigate("/concerts")}>
+              Current concerts
+            </button>
+          </li>
+          <li>
+            {" "}
+            <button className="btn" onClick={() => navigate("/concerts")}>
+              Concerts Today
+            </button>
+          </li>
+          <li>
+            <SearchBar />
+          </li>
+          <li>
+            <Login />
+          </li>
+        </ul>
+      </section>
     </header>
   );
 }

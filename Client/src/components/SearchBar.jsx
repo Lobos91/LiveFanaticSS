@@ -1,44 +1,39 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { createSearchParams } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
-  const [concerts, setConcerts] = useState([]);
-  const [artists, setArtists] = useState([]);
+  const navigate = useNavigate();
+  const [query, setQuery] = useState();
+  //
+  // const searchText = (event) => {
+  //   setQuery(event.target.value);
+  //   handleChange();
+  // };
 
-  useEffect(() => {
-    // Load concerts and artist from database
-    const loadData = async () => {
-      const responseConcerts = await axios.get("/data/concerts");
-      const responseArtists = await axios.get("/data/artists");
-      setConcerts(responseConcerts.data);
-      setArtists(responseArtists.data);
-    };
-
-    loadData();
-  }, []);
-
-  const queryConcerts = concerts.filter((concert) =>
-    concert.name.toLowerCase().includes(query)
-  );
-
-  const queryArtists = artists.filter((artist) =>
-    artist.name.toLowerCase().includes(query)
-  );
-
-  console.log(queryConcerts);
-  console.log(queryArtists);
+  const handleChange = (event) => {
+    navigate({
+      pathname: "/searchpage",
+      search: createSearchParams({
+        id: query,
+      }).toString(),
+    });
+  };
 
   return (
     <div>
       <input
         className="search"
         type="text"
-        placeholder="Search here"
+        placeholder="Artist/Band"
         onChange={(e) => setQuery(e.target.value)}
       />
-      {/* ////// Content /////*/}
-      {/* This content should be located in SearchPage */}
+      <button className="btn" onClick={handleChange}>
+        {" "}
+        Search
+      </button>
     </div>
   );
 };
