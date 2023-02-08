@@ -1,7 +1,6 @@
 import Login from "./Login";
 import logo from "../assets/livefanlogo.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 import SearchBar from "./SearchBar";
 
@@ -12,12 +11,13 @@ function Header() {
     <header>
       <img src={logo} className="logo-image" />
 
-      <section class="top-nav">
+      <section>
         <input id="menu-toggle" type="checkbox" />
-        <label class="menu-button-container" for="menu-toggle">
-          <div class="menu-button"></div>
+        <label className="menu-button-container" htmlFor="menu-toggle">
+          {/* empty div to get burger icon */}
+          <div className="menu-button"></div>
         </label>
-        <ul class="menu">
+        <ul className="menu">
           <li>
             <button className="btn" onClick={() => navigate("/")}>
               Home
@@ -25,7 +25,7 @@ function Header() {
           </li>
           <li>
             <button className="btn" onClick={() => navigate("/concerts")}>
-              Current concerts
+              Upcoming concerts
             </button>
           </li>
           <li>

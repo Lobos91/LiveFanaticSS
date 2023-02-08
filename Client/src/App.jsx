@@ -11,6 +11,7 @@ function App() {
     <GlobalProvider>
       <Router>
         <Header />
+        <br />
         <div className="container-fluid">
           <Routes>
             <Route path="/" element={<Welcome />} />

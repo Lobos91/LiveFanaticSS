@@ -9,19 +9,25 @@ export default function Welcome() {
 
   return (
     <div>
-      <br />
       <section>
         {auth.loggedIn ? (
           "Welcome " + auth.email
         ) : (
-          <div className="welcome-unlogged ">
-            <div>
-              <button
-                className="btn-singup"
-                onClick={() => navigate("/signup")}
-              >
-                Sign up
-              </button>
+          <div className="box ">
+            <div className="input-field ">
+              <h1>Welcome at Live Fanatics SS</h1>
+              <h2 className="column">
+                Register today to get access to multiple concerts across the
+                world and enjoy the music!
+              </h2>
+              <div>
+                <button
+                  className="btn-singup "
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign up
+                </button>
+              </div>
             </div>
           </div>
         )}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { createSearchParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
@@ -25,7 +24,7 @@ const SearchBar = () => {
   return (
     <div>
       <input
-        className="search"
+        className="navinput"
         type="text"
         placeholder="Artist/Band"
         onChange={(e) => setQuery(e.target.value)}

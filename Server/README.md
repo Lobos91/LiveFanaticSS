@@ -9,9 +9,14 @@ npm i -g nodemon
 
 ### Scripts
 
-Run app and client in dev mode
+Run app and client concurently
 
 npm run dev
+
+### Test user
+
+exempel@nodehill.com
+abc123
 
 ### Notes
 

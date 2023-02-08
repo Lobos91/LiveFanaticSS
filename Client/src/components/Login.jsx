@@ -31,13 +31,13 @@ function Login() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 style={{ marginRight: 5 }}
-                className="login"
+                className="navinput"
               />
               <input
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="login"
+                className="navinput"
               />
               <input className="btn" type="submit" value="Login" />
             </div>
