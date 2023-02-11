@@ -31,8 +31,8 @@ export const SearchPage = (props) => {
   );
 
   return (
-    <div>
-      <h1 className="center">Search concerts </h1>
+    <div className=" center">
+      <h1 className=" textpink">Search concerts </h1>
       <hr className="stylez" />
       {queryConcerts.map((concert) => {
         return (

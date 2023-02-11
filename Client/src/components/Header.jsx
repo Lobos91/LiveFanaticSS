@@ -30,8 +30,8 @@ function Header() {
           </li>
           <li>
             {" "}
-            <button className="btn" onClick={() => navigate("/concerts")}>
-              Concerts Today
+            <button className="btn" onClick={() => navigate("/explore")}>
+              Explore
             </button>
           </li>
           <li>

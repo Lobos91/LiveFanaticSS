@@ -15,12 +15,12 @@ export default function Welcome() {
         ) : (
           <div className="box ">
             <div className="input-field ">
-              <h1>Welcome at Live Fanatics SS</h1>
-              <h2 className="column">
+              <h1 className="textpink">Welcome at Live Fanatics SS</h1>
+              <h2 className="column textpink">
                 Register today to get access to multiple concerts across the
                 world and enjoy the music!
               </h2>
-              <div>
+              <div style={{ paddingTop: 30 }}>
                 <button
                   className="btn-singup "
                   onClick={() => navigate("/signup")}
