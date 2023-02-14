@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import defaultpicture from "../assets/noimage.png";
 import GlobalContext from "../GlobalContext";
 import BookBtn from "./BookBtn";
+import { useNavigate } from "react-router-dom";
 
 const Explore = () => {
   //Raw JSON Date example:  "2023-02-08T23:15:30.000Z"
@@ -13,12 +14,27 @@ const Explore = () => {
   const [startDate, setStartDate] = useState(currentDate);
   const [endDate, setEndDate] = useState(currentDate);
   const [limit, setLimit] = useState(25);
-  const [tickets, setTickets] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadConcerts = async () => {
-      const request = await axios.get("data/concerts");
-      setConcerts(request.data);
+      const resConcerts = await axios.get("data/concerts");
+      const tickets = await axios.get("/data/tickets");
+
+      for (let i = 0; i < tickets.data.length; i++) {
+        for (let j = 0; j < resConcerts.data.length; j++) {
+          if (
+            tickets.data[i].concertid == resConcerts.data[j].id &&
+            tickets.data[i].booked == 0
+          ) {
+            Object.assign(resConcerts.data[j], {
+              status: "available",
+            });
+          }
+        }
+      }
+
+      setConcerts(resConcerts.data);
     };
     loadConcerts();
   }, []);
@@ -27,6 +43,8 @@ const Explore = () => {
   const filtered = concerts.filter((concert) => {
     return concert.datum >= startDate && concert.datum <= endDate;
   });
+
+  filtered.sort((a, b) => (a.datum > b.datum ? 1 : a.datum < b.datum ? -1 : 0));
 
   return (
     <div className="center">
@@ -78,7 +96,22 @@ const Explore = () => {
                       : concert.venue}
                   </p>
                 </div>
-                {auth.loggedIn ? <BookBtn /> : ""}
+                {auth.loggedIn ? (
+                  concert.status ? (
+                    <BookBtn
+                      text="Book a ticket"
+                      clickFunc={() =>
+                        navigate("/concert", {
+                          state: { concert },
+                        })
+                      }
+                    />
+                  ) : (
+                    <BookBtn color="gray" />
+                  )
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           );
@@ -88,7 +121,7 @@ const Explore = () => {
           {!filtered.length ? (
             ""
           ) : (
-            <button className="btn-singup " onClick={() => setLimit(limit + 5)}>
+            <button className="btn-singup" onClick={() => setLimit(limit + 5)}>
               Show more
             </button>
           )}

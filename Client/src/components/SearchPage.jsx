@@ -8,6 +8,7 @@ import BookBtn from "./BookBtn";
 
 export const SearchPage = (props) => {
   const [concerts, setConcerts] = useState([]);
+
   const [searchparams] = useSearchParams();
   const { auth } = useContext(GlobalContext);
   const [limit, setLimit] = useState(25);
@@ -17,8 +18,21 @@ export const SearchPage = (props) => {
   useEffect(() => {
     // Load concerts and artist from database
     const loadData = async () => {
-      const responseConcerts = await axios.get("/data/concerts");
-      setConcerts(responseConcerts.data);
+      const resConcerts = await axios.get("/data/concerts");
+      const tickets = await axios.get("/data/tickets");
+
+      for (let i = 0; i < tickets.data.length; i++) {
+        for (let j = 0; j < resConcerts.data.length; j++) {
+          if (
+            tickets.data[i].concertid == resConcerts.data[j].id &&
+            tickets.data[i].booked == 0
+          ) {
+            Object.assign(resConcerts.data[j], { status: "available" });
+          }
+        }
+      }
+
+      setConcerts(resConcerts.data);
     };
 
     loadData();
@@ -59,7 +73,15 @@ export const SearchPage = (props) => {
                       : concert.venue}
                   </p>
                 </div>
-                {auth.loggedIn ? <BookBtn /> : ""}
+                {auth.loggedIn ? (
+                  concert.status ? (
+                    <BookBtn text="Book a ticket" />
+                  ) : (
+                    <BookBtn color="gray" />
+                  )
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           );

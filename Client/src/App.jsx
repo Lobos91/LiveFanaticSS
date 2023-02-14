@@ -3,9 +3,10 @@ import { GlobalProvider } from "./GlobalContext";
 import Welcome from "./components/Welcome";
 import Header from "./components/Header";
 import Signup from "./components/Signup";
-import { ConcertLatest } from "./components/ConcertLatest";
 import { SearchPage } from "./components/SearchPage";
 import Explore from "./components/Explore";
+import { UserPage } from "./components/UserPage";
+import { Book } from "./components/Book";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/concerts" element={<ConcertLatest />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/concert" element={<Book />} />
             <Route path="/searchpage" element={<SearchPage />} />
             <Route path="/explore" element={<Explore />} />
           </Routes>

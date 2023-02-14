@@ -1,11 +1,15 @@
 import Login from "./Login";
 import logo from "../assets/livefanlogo.png";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import GlobalContext from "../GlobalContext";
+import { useContext, useState } from "react";
+import { BsFillPersonFill } from "react-icons/bs";
 
 import SearchBar from "./SearchBar";
 
 function Header() {
   const navigate = useNavigate();
+  const { auth } = useContext(GlobalContext);
 
   return (
     <header>
@@ -23,11 +27,7 @@ function Header() {
               Home
             </button>
           </li>
-          <li>
-            <button className="btn" onClick={() => navigate("/concerts")}>
-              Upcoming concerts
-            </button>
-          </li>
+
           <li>
             {" "}
             <button className="btn" onClick={() => navigate("/explore")}>
@@ -40,6 +40,16 @@ function Header() {
           <li>
             <Login />
           </li>
+          {auth.loggedIn ? (
+            <li>
+              <BsFillPersonFill
+                className="profileBtn"
+                onClick={() => navigate("/user")}
+              />
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
       </section>
     </header>
