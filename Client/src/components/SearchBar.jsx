@@ -6,17 +6,12 @@ import { useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState();
-  //
-  // const searchText = (event) => {
-  //   setQuery(event.target.value);
-  //   handleChange();
-  // };
 
   const handleChange = (event) => {
     navigate({
       pathname: "/searchpage",
       search: createSearchParams({
-        id: query,
+        band: query,
       }).toString(),
     });
   };
@@ -30,7 +25,6 @@ const SearchBar = () => {
         onChange={(e) => setQuery(e.target.value)}
       />
       <button className="btn" onClick={handleChange}>
-        {" "}
         Search
       </button>
     </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import defaultpicture from "../assets/noimage.png";
 import GlobalContext from "../GlobalContext";
+import BookBtn from "./BookBtn";
 
 const Explore = () => {
   //Raw JSON Date example:  "2023-02-08T23:15:30.000Z"
@@ -22,6 +23,7 @@ const Explore = () => {
     loadConcerts();
   }, []);
 
+  console.log(concerts);
   const filtered = concerts.filter((concert) => {
     return concert.datum >= startDate && concert.datum <= endDate;
   });
@@ -76,12 +78,12 @@ const Explore = () => {
                       : concert.venue}
                   </p>
                 </div>
-                {auth.loggedIn ? <a href="#">Book a ticket</a> : ""}
+                {auth.loggedIn ? <BookBtn /> : ""}
               </div>
             </div>
           );
         })}
-        <div className="center">
+        <div>
           <hr className="stylez" />
           {!filtered.length ? (
             ""

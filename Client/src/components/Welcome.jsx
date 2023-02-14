@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import GlobalContext from "../GlobalContext";
+import { UserPage } from "./UserPage";
 
 import { useNavigate } from "react-router-dom";
 
@@ -11,12 +12,12 @@ export default function Welcome() {
     <div>
       <section>
         {auth.loggedIn ? (
-          "Welcome " + auth.email
+          <UserPage />
         ) : (
           <div className="box ">
             <div className="input-field ">
               <h1 className="textpink">Welcome at Live Fanatics SS</h1>
-              <h2 className="column textpink">
+              <h2 className="column ">
                 Register today to get access to multiple concerts across the
                 world and enjoy the music!
               </h2>
