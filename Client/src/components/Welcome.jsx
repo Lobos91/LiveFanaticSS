@@ -12,7 +12,7 @@ export default function Welcome() {
     <div>
       <section>
         {auth.loggedIn ? (
-          <h1>Welcome {auth.email} </h1>
+          <h1>Welcome {auth.email}</h1>
         ) : (
           <div className="box ">
             <div className="input-field ">

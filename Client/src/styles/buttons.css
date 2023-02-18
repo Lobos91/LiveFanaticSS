@@ -1,0 +1,51 @@
+.btn {
+  display: inline-block;
+  background: rgb(27, 226, 54);
+  color: #fff;
+  padding: 5px 5px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-singup {
+  width: 15rem;
+  height: 5rem;
+  background: rgb(255, 204, 0);
+  color: rgb(7, 6, 6);
+  font-size: large;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn:active,
+.bookBtn:active,
+.btn-singup:active {
+  transform: scale(1.1);
+  background: rgb(255, 204, 0);
+  color: black;
+}
+
+.profileBtn {
+  display: inline-block;
+  background: rgb(255, 0, 0);
+  color: #fff;
+  padding: 5px 5px;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: solid 2px black;
+  margin-top: 2px;
+}
+
+.profileBtn:active {
+  border: solid 2px rgb(206, 248, 0);
+}
+
+button:disabled {
+  background-color: rgb(13, 79, 15);
+}

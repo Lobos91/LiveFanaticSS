@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import defaultpicture from "../assets/noimage.png";
@@ -8,7 +8,7 @@ import BookBtn from "./BookBtn";
 
 export const SearchPage = (props) => {
   const [concerts, setConcerts] = useState([]);
-
+  const navigate = useNavigate();
   const [searchparams] = useSearchParams();
   const { auth } = useContext(GlobalContext);
   const [limit, setLimit] = useState(25);
@@ -49,7 +49,7 @@ export const SearchPage = (props) => {
   return (
     <div className=" center">
       <h1 className=" textpink">Search concerts </h1>
-      <hr className="stylez" />
+      <hr />
       {queryConcerts
         .slice(0, limit ? limit : concerts.length)
         .map((concert) => {
@@ -75,7 +75,14 @@ export const SearchPage = (props) => {
                 </div>
                 {auth.loggedIn ? (
                   concert.status ? (
-                    <BookBtn text="Book a ticket" />
+                    <BookBtn
+                      text="Book a ticket"
+                      clickFunc={() =>
+                        navigate("/concert", {
+                          state: { concert },
+                        })
+                      }
+                    />
                   ) : (
                     <BookBtn color="gray" />
                   )
@@ -86,7 +93,7 @@ export const SearchPage = (props) => {
             </div>
           );
         })}
-      <hr className="stylez" />
+      <hr />
       {!queryConcerts.length ? (
         <h2>
           No artist matching "<span style={{ color: "red" }}>{query}</span>"

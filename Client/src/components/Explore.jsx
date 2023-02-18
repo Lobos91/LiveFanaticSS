@@ -117,7 +117,7 @@ const Explore = () => {
           );
         })}
         <div>
-          <hr className="stylez" />
+          <hr />
           {!filtered.length ? (
             ""
           ) : (

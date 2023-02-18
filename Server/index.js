@@ -52,6 +52,7 @@ require("./routes/audio-example.js")(server, db);
 require("./api-description.js")(host, server);
 require("./routes/users.js")(server, db);
 require("./routes/login.js")(server, db);
+require("./routes/tickets.js")(server, db);
 
 // stream routes
 require("./routes/video-stream.js")(server, db);
