@@ -42,6 +42,8 @@ export const SearchPage = (props) => {
     concert.name.toLowerCase().includes(query)
   );
 
+  console.log("lista", queryConcerts);
+
   queryConcerts.sort((a, b) =>
     a.datum > b.datum ? 1 : a.datum < b.datum ? -1 : 0
   );
@@ -61,6 +63,12 @@ export const SearchPage = (props) => {
                     ? concert.name.slice(0, 32) + "..."
                     : concert.name}
                 </h3>
+
+                {concert.live ? (
+                  <h2 className="online"> Online</h2>
+                ) : (
+                  <h2 className="textpink"> Live!</h2>
+                )}
                 <img
                   src={concert?.image ? concert.image : defaultpicture}
                   alt="Band-Image"

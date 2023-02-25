@@ -20,15 +20,15 @@ export const Book = () => {
 
       response.data.forEach((ticket) => {
         if (concert.id == ticket.concertid && ticket.booked == 0) {
-          ticketsTemp.push(ticket); //zamiast ticketsTemp
+          ticketsTemp.push(ticket);
         }
       });
-      setTickets(ticketsTemp); //zamiast ticketsTemp
+      setTickets(ticketsTemp);
     };
     loadTickets();
   }, []);
 
-  // Adding amount of tickets selected by user to new OnPost array
+  // Adding and subtracking amount of tickets selected by user to new OnPost array
   const add = () => {
     setCount(count + 1);
 
@@ -50,10 +50,6 @@ export const Book = () => {
       }
     }
   };
-
-  // const postArray = [
-  //   {ticketid: 1, userid: null, concertid: 1, booked: 0},
-  //   {ticketid: 3, userid: null, concertid: 1, booked: 0},
 
   const onPostFunc = () => {
     for (let i = 0; i < postArray.length; i++) {
@@ -94,7 +90,7 @@ export const Book = () => {
               <p>
                 {!tickets.length
                   ? "Out of stock"
-                  : "Available Tickets: " + tickets.length}
+                  : "Available tickets: " + tickets.length}
               </p>
               <div>
                 {/* Counter plus  */}
@@ -114,6 +110,7 @@ export const Book = () => {
                   &#65293;
                 </button>
                 <h4>Selected: {count}</h4>
+                <h4>Price: Free!</h4>
               </div>
 
               {count > 0 ? (
@@ -121,17 +118,32 @@ export const Book = () => {
                   Buy tickets
                 </button>
               ) : (
-                <BookBtn color="gray" text="Chose number of tickets" />
+                <BookBtn color="gray" text="No ticket selected" />
               )}
             </div>
             <div className="flex-child ">
               <h2>Event Info</h2>
-              <h4>Location: {concert.venue}</h4>
-              <h4>When: {concert.datum}</h4>
-              <h4>Time: {concert.time}</h4>
-              <h4>
-                Gates open: {concert.hour - 1}:{concert.minute}
-              </h4>
+              {!concert.live ? (
+                <div>
+                  <h4>Location: {concert.venue}</h4>
+                  <h4>When: {concert.datum}</h4>
+                  <h4>Time: {concert.time}</h4>
+                  <h4>
+                    Gates open: {concert.hour - 1}:{concert.minute}
+                  </h4>
+                </div>
+              ) : (
+                <div>
+                  <h3>
+                    This is online concert. After purchasing the ticket, the
+                    concert will be available to watch from the user panel.
+                  </h3>
+                  <h4>
+                    You can stream this concert directly after purchasing the
+                    ticket.
+                  </h4>
+                </div>
+              )}
             </div>
           </div>
           <hr />

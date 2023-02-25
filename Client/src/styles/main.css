@@ -54,26 +54,16 @@ hr {
   );
 }
 
-/* USER GALERY FORM 
-//////////////////// */
-
-div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
+.input {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 25px;
+  padding: 5px 5px 5px 5px;
+  border: solid 5px rgb(88, 22, 241);
 }
 
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
+.online {
+  color: #d40000;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

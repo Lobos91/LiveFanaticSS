@@ -46,13 +46,15 @@
 ---------------------------------------*/
 
 @media (max-width: 860px) {
-  .flex-container {
+  .flex-container,
+  .user-ticket-container {
     flex-flow: column wrap;
   }
 }
 
 .flex-container {
   display: flex;
+  width: 98%;
 }
 
 .flex-child {
@@ -68,4 +70,44 @@
   border: solid 1px black;
   border-radius: 7%;
   box-shadow: 0 8px 16px 0 rgba(169, 174, 32, 0.2);
+  margin-top: 3rem;
+}
+
+/*--------------------------------------/
+ ---- USER PAGE TICKETS     ------------/
+---------------------------------------*/
+
+.user-ticket-container {
+  display: flex;
+  background-color: #444d51;
+  max-width: 50rem;
+  margin-bottom: 15px;
+  line-height: 0.5;
+  border-radius: 20px;
+}
+
+.user-ticket-child {
+  flex: 1;
+  font-family: "Courier New", Courier, monospace;
+  border: dashed 4px rgb(223, 204, 56);
+  margin: 15px 15px 15px 15px;
+}
+
+.user-ticket-child:first-child {
+  flex: 2;
+  border: dashed 4px rgb(213, 84, 84);
+}
+
+.user-ticket-img img {
+  max-height: 7rem;
+  min-width: 15rem;
+}
+
+.ml h1,
+.ml h2,
+.ml h3,
+.ml h4,
+.ml p,
+.user-ticket-container {
+  margin-left: 10px;
 }

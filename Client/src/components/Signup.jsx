@@ -39,7 +39,7 @@ const Signup = () => {
       <form onSubmit={onPost}>
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           required={"Please enter your email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -48,7 +48,7 @@ const Signup = () => {
 
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           required={"Please enter a new password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -56,7 +56,7 @@ const Signup = () => {
         />
         <input
           type="password"
-          placeholder="password confirmation"
+          placeholder="Password confirmation"
           required={"Please confirm your password"}
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
@@ -66,7 +66,7 @@ const Signup = () => {
           {password == passwordConfirm && password != "" ? (
             <button className="btn">Sign Up</button>
           ) : (
-            "Password must match"
+            "Password must match !"
           )}
         </div>
       </form>

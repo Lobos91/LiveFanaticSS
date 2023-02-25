@@ -21,6 +21,7 @@ const Explore = () => {
       const resConcerts = await axios.get("data/concerts");
       const tickets = await axios.get("/data/tickets");
 
+      //adding available status to array of concerts
       for (let i = 0; i < tickets.data.length; i++) {
         for (let j = 0; j < resConcerts.data.length; j++) {
           if (
@@ -39,19 +40,19 @@ const Explore = () => {
     loadConcerts();
   }, []);
 
-  console.log(concerts);
+  // filtering by date but not sorted
   const filtered = concerts.filter((concert) => {
     return concert.datum >= startDate && concert.datum <= endDate;
   });
 
+  // sorting in ascending order
   filtered.sort((a, b) => (a.datum > b.datum ? 1 : a.datum < b.datum ? -1 : 0));
 
   return (
-    <div className="center">
-      <label for="start">Start date:</label>
-      <label for="end">End date:</label>
-
+    <div className="center ">
+      <h3>Search for concerts between two dates!</h3>
       <input
+        className="input"
         type="date"
         id="start"
         value={startDate}
@@ -59,8 +60,8 @@ const Explore = () => {
         max="2030-12-31"
         onChange={(event) => setStartDate(event.target.value)}
       />
-
       <input
+        className="input"
         type="date"
         id="end"
         value={endDate}
@@ -83,7 +84,13 @@ const Explore = () => {
                     ? concert.name.slice(0, 32) + "..."
                     : concert.name}
                 </h3>
-                <h2>{concert.id}</h2>
+
+                {concert.live ? (
+                  <h2 className="online"> Online</h2>
+                ) : (
+                  <h2 className="textpink"> Live!</h2>
+                )}
+
                 <img
                   src={concert?.image ? concert.image : defaultpicture}
                   alt="Band-Image"

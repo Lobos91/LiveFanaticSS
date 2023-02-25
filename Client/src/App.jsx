@@ -22,6 +22,7 @@ function App() {
             <Route path="/concert" element={<Book />} />
             <Route path="/searchpage" element={<SearchPage />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/welcome" element={<Welcome />} />
           </Routes>
         </div>
       </Router>
