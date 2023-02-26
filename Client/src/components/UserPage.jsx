@@ -3,10 +3,12 @@ import { useContext, useState, useEffect } from "react";
 import GlobalContext from "../GlobalContext";
 import axios from "axios";
 import barcode from "../assets/kod.png";
+import { useNavigate } from "react-router-dom";
 
 export const UserPage = () => {
   const { auth } = useContext(GlobalContext);
   const [userData, setUserData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     let tickets = [];
     let concerts = [];
@@ -51,16 +53,46 @@ export const UserPage = () => {
               <div className="user-ticket-container" key={concert.id}>
                 <div className="user-ticket-child">
                   <h3 style={{ fontStyle: "italic" }}>{concert.name} </h3>
-                  <h4>Location: {concert.venue}</h4>
-                  <h4>Date: {concert.datum}</h4>
-                  <h4>
-                    Gate open: {concert.hour - 1}:{concert.minute}
-                  </h4>
+
+                  {concert.live ? (
+                    <div>
+                      <h4>Date: {concert.datum}</h4>
+                      <h4>
+                        Time: {concert.hour}:{concert.minute}
+                      </h4>
+                      <h4 className="textpink">
+                        This is ticket for online streaming.
+                      </h4>
+                    </div>
+                  ) : (
+                    <div>
+                      <h4>Location: {concert.venue}</h4>
+                      <h4>Date: {concert.datum}</h4>
+                      <h4>
+                        Gate open: {concert.hour - 1}:{concert.minute}{" "}
+                      </h4>
+                    </div>
+                  )}
+
                   <p>Ticket holder: {auth.email}</p>
                 </div>
 
                 <div className="user-ticket-child user-ticket-img center">
-                  <img src={barcode} alt="Barcode" />
+                  {concert.live ? (
+                    <button
+                      onClick={() =>
+                        navigate("/streaming/" + concert.id, {
+                          state: { concert },
+                        })
+                      }
+                      className="btn-singup"
+                    >
+                      Watch preview
+                    </button>
+                  ) : (
+                    <img src={barcode} alt="Barcode" />
+                  )}
+
                   <p>Ticket No. {concert.ticketid}</p>
                 </div>
               </div>

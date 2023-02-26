@@ -10,9 +10,6 @@ export default function Welcome() {
 
   return (
     <div>
-      {/* <video controls>
-        <source src={"/data/video-stream/1"} type="video/mp4" />
-      </video> */}
       <section>
         {auth.loggedIn ? (
           <h1>Welcome {auth.email}</h1>

@@ -3,12 +3,18 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import BookBtn from "./BookBtn";
+import { InfoComponent } from "./InfoComponent";
 
 export const Book = () => {
   const [tickets, setTickets] = useState([]);
   const { state } = useLocation();
+  let concert;
+  if (state) {
+    concert = state.concert;
+  }
+
   const { auth } = useContext(GlobalContext);
-  const concert = state.concert;
+
   const [count, setCount] = useState(0);
   const [postArray, setPostArray] = useState([]);
   const navigate = useNavigate();
@@ -18,11 +24,14 @@ export const Book = () => {
     const loadTickets = async () => {
       const response = await axios.get("/data/tickets");
 
-      response.data.forEach((ticket) => {
-        if (concert.id == ticket.concertid && ticket.booked == 0) {
-          ticketsTemp.push(ticket);
-        }
-      });
+      if (concert) {
+        response.data.forEach((ticket) => {
+          if (concert.id == ticket.concertid && ticket.booked == 0) {
+            ticketsTemp.push(ticket);
+          }
+        });
+      }
+
       setTickets(ticketsTemp);
     };
     loadTickets();
@@ -70,85 +79,89 @@ export const Book = () => {
     navigate("/user");
   };
 
-  return (
-    <div>
-      <div className="flex-container  ">
-        <div className="flex-child flex-item center">
-          <img
-            src={concert?.image ? concert.image : defaultpicture}
-            alt="Band-Image"
-            className="imgBooking "
-          />
-        </div>
-
-        <div className="flex-child center flex1">
-          <h1 className="textpink">{concert.name}</h1>
-          <hr />
-
-          <div className="flex-container">
-            <div className="flex-child ">
-              <p>
-                {!tickets.length
-                  ? "Out of stock"
-                  : "Available tickets: " + tickets.length}
-              </p>
-              <div>
-                {/* Counter plus  */}
-                <button
-                  disabled={count >= tickets.length}
-                  className="btn"
-                  onClick={() => add()}
-                >
-                  &#65291;
-                </button>
-
-                <button
-                  disabled={count === 0}
-                  className="btn"
-                  onClick={() => sub()}
-                >
-                  &#65293;
-                </button>
-                <h4>Selected: {count}</h4>
-                <h4>Price: Free!</h4>
-              </div>
-
-              {count > 0 ? (
-                <button onClick={() => onPostFunc()} className="btn-singup">
-                  Buy tickets
-                </button>
-              ) : (
-                <BookBtn color="gray" text="No ticket selected" />
-              )}
-            </div>
-            <div className="flex-child ">
-              <h2>Event Info</h2>
-              {!concert.live ? (
-                <div>
-                  <h4>Location: {concert.venue}</h4>
-                  <h4>When: {concert.datum}</h4>
-                  <h4>Time: {concert.time}</h4>
-                  <h4>
-                    Gates open: {concert.hour - 1}:{concert.minute}
-                  </h4>
-                </div>
-              ) : (
-                <div>
-                  <h3>
-                    This is online concert. After purchasing the ticket, the
-                    concert will be available to watch from the user panel.
-                  </h3>
-                  <h4>
-                    You can stream this concert directly after purchasing the
-                    ticket.
-                  </h4>
-                </div>
-              )}
-            </div>
+  if (!auth.loggedIn) {
+    return <InfoComponent />;
+  } else {
+    return (
+      <div>
+        <div className="flex-container  ">
+          <div className="flex-child flex-item center">
+            <img
+              src={concert?.image ? concert.image : defaultpicture}
+              alt="Band-Image"
+              className="imgBooking "
+            />
           </div>
-          <hr />
+
+          <div className="flex-child center flex1">
+            <h1 className="textpink">{concert.name}</h1>
+            <hr />
+
+            <div className="flex-container">
+              <div className="flex-child ">
+                <p>
+                  {!tickets.length
+                    ? "Out of stock"
+                    : "Available tickets: " + tickets.length}
+                </p>
+                <div>
+                  {/* Counter plus  */}
+                  <button
+                    disabled={count >= tickets.length}
+                    className="btn"
+                    onClick={() => add()}
+                  >
+                    &#65291;
+                  </button>
+
+                  <button
+                    disabled={count === 0}
+                    className="btn"
+                    onClick={() => sub()}
+                  >
+                    &#65293;
+                  </button>
+                  <h4>Selected: {count}</h4>
+                  <h4>Price: Free!</h4>
+                </div>
+
+                {count > 0 ? (
+                  <button onClick={() => onPostFunc()} className="btn-singup">
+                    Buy tickets
+                  </button>
+                ) : (
+                  <BookBtn color="gray" text="No ticket selected" />
+                )}
+              </div>
+              <div className="flex-child ">
+                <h2>Event Info</h2>
+                {!concert.live ? (
+                  <div>
+                    <h4>Location: {concert.venue}</h4>
+                    <h4>When: {concert.datum}</h4>
+                    <h4>Time: {concert.time}</h4>
+                    <h4>
+                      Gates open: {concert.hour - 1}:{concert.minute}
+                    </h4>
+                  </div>
+                ) : (
+                  <div>
+                    <h3>
+                      This is online concert. After purchasing the ticket, the
+                      concert will be available in user panel.
+                    </h3>
+                    <h4>
+                      You can stream preview of this concert directly after
+                      purchasing the ticket.
+                    </h4>
+                  </div>
+                )}
+              </div>
+            </div>
+            <hr />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };

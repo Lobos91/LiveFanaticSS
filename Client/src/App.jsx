@@ -7,6 +7,7 @@ import { SearchPage } from "./components/SearchPage";
 import Explore from "./components/Explore";
 import { UserPage } from "./components/UserPage";
 import { Book } from "./components/Book";
+import { Streaming } from "./components/Streaming";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/searchpage" element={<SearchPage />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/welcome" element={<Welcome />} />
+            <Route path="/streaming/:id" element={<Streaming />} />
           </Routes>
         </div>
       </Router>
