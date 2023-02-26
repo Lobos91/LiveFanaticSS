@@ -11,7 +11,7 @@ npm i -g nodemon
 
 Run app and client concurently
 
-npm run dev
+npm run all
 
 ### Test user
 
@@ -20,5 +20,5 @@ abc123
 
 ### Notes
 
-audios
-videos
+Non registered user is allowed to browse concerts
+Registered user is allowed to browse and book concerts
