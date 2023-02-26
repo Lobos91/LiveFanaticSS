@@ -8,6 +8,7 @@ import Explore from "./components/Explore";
 import { UserPage } from "./components/UserPage";
 import { Book } from "./components/Book";
 import { Streaming } from "./components/Streaming";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <div className="space" />
+      <Footer />
     </GlobalProvider>
   );
 }

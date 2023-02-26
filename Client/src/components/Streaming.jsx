@@ -13,7 +13,11 @@ export const Streaming = () => {
     concert = state.concert;
   }
 
-  if (auth.loggedIn) {
+  if (!auth.loggedIn) {
+    return <InfoComponent />;
+  } else if (!concert) {
+    return <h1 className="center">Video not found</h1>;
+  } else {
     return (
       <div className="box">
         <h1 className="textpink">Enjoy your concert! </h1>
@@ -23,7 +27,5 @@ export const Streaming = () => {
         <h1 className="textpink">{concert.name} </h1>
       </div>
     );
-  } else {
-    return <InfoComponent />;
   }
 };

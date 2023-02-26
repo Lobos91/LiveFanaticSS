@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import GlobalContext from "../GlobalContext";
-import { UserPage } from "./UserPage";
+import skyltning from "../assets/Screenshot_1.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,20 @@ export default function Welcome() {
     <div>
       <section>
         {auth.loggedIn ? (
-          <h1>Welcome {auth.email}</h1>
+          <div className="center">
+            <h1 className="textpink">Welcome {auth.email}</h1>
+            <hr />
+            <h2>
+              As a user, you gain access to over two thousand live and online
+              concerts.
+            </h2>
+            <h2>All concerts are free so jump in and enjoy! </h2>
+            <img className="responsive" src={skyltning} alt="Concert image" />
+            <h5>
+              Keep in mind, not all concerts might be available at the very
+              moment.{" "}
+            </h5>
+          </div>
         ) : (
           <div className="box ">
             <div className="input-field ">

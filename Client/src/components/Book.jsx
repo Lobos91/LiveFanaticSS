@@ -8,7 +8,7 @@ import { InfoComponent } from "./InfoComponent";
 export const Book = () => {
   const [tickets, setTickets] = useState([]);
   const { state } = useLocation();
-  let concert;
+  let concert = {};
   if (state) {
     concert = state.concert;
   }
@@ -81,6 +81,17 @@ export const Book = () => {
 
   if (!auth.loggedIn) {
     return <InfoComponent />;
+    // becouse concert.length return undefinied lol
+  } else if (!Object.keys(concert).length) {
+    return (
+      <div className="center">
+        <h1>Unauthorized attempt to access concert from the web browser. </h1>
+        <h2>
+          Go back to main page and explore concerts using provided
+          functionality.
+        </h2>
+      </div>
+    );
   } else {
     return (
       <div>

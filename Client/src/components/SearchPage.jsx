@@ -108,7 +108,7 @@ export const SearchPage = (props) => {
           found
         </h2>
       ) : (
-        <button className="btn-singup " onClick={() => setLimit(limit + 5)}>
+        <button className="btn-singup " onClick={() => setLimit(limit + 4)}>
           Show more
         </button>
       )}

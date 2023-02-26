@@ -1,5 +1,4 @@
 body {
-  /* width: 99.5%; */
   min-width: auto;
   background-color: #1f1e1e;
   color: white;
@@ -68,7 +67,23 @@ hr {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.vertical-text {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+.responsive {
+  width: 55%;
+  height: auto;
+  border-radius: 100px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3px;
+  background-color: #2a2626;
+  text-align: center;
+  font-size: 14px;
+}
+
+.space {
+  padding: 2rem;
 }

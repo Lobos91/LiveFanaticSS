@@ -7,7 +7,7 @@ const SearchBar = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState();
 
-  const handleChange = (event) => {
+  const handleChange = () => {
     navigate({
       pathname: "/searchpage",
       search: createSearchParams({
